@@ -1,0 +1,29 @@
+{
+  "word_limit": 100,
+  "test_command_patterns": [
+    "\\bpytest\\b",
+    "\\bpy\\.test\\b",
+    "python[0-9.]*\\s+-m\\s+(pytest|unittest|mypy|ruff|flake8|pyflakes|pyright|compileall|py_compile)\\b",
+    "\\b(ruff|flake8|mypy|pyright|pylint|shellcheck|eslint|tsc)\\b",
+    "\\b(npm|pnpm|yarn)\\s+(run\\s+)?(test|lint|build|typecheck|check)\\b",
+    "\\bnpx\\s+(vitest|jest|playwright|tsc|eslint)\\b",
+    "\\bcargo\\s+(test|check|clippy|build)\\b",
+    "\\bgo\\s+(test|vet|build)\\b",
+    "\\bmake\\s+(test|check|lint|verify)\\b",
+    "\\b(bash|sh)\\s+-n\\b",
+    "\\b(test|check|verify|smoke)[\\w-]*\\.(py|sh|js)\\b"
+  ],
+  "ignore_command_patterns": [
+    "--help\\b",
+    "--version\\b",
+    "--collect-only\\b",
+    "\\bwhich\\b"
+  ],
+  "claim_patterns": [
+    "\\b(done|fixed|finished|complete[d]?|resolved|implemented|shipped|verified)\\b",
+    "\\b(works|working|passes|passed|passing)\\b",
+    "\\ball (green|good|set|tests? pass\\w*)\\b",
+    "\\bgood to go\\b"
+  ],
+  "edit_tools": ["Edit", "Write", "MultiEdit", "NotebookEdit"]
+}
