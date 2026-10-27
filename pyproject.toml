@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "donegate"
+version = "0.1.0"
+description = "Claude Code Stop hook: no \"done\" without a test or check whose output was read"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.10"
+
+[project.scripts]
+donegate = "donegate:main"
+
+[tool.setuptools]
+py-modules = ["donegate"]
