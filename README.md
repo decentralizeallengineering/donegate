@@ -25,7 +25,7 @@ Expected: the first command prints a JSON block decision, `{"decision": "block",
 
 ## Hook setup
 
-Add a Stop hook to `.claude/settings.json` (project) or `~/.claude/settings.json` (user), with the real path to `donegate.py`:
+Install the `donegate` command with `pipx install git+https://github.com/decentralizeallengineering/donegate`, or run `donegate.py` from a checkout. Then add a Stop hook to `.claude/settings.json` (project) or `~/.claude/settings.json` (user). With the installed command the hook command is `donegate`; from a checkout it is `python3` plus the real path to `donegate.py`:
 
 ```json
 {
@@ -61,7 +61,7 @@ Settings, first file found wins: `$DONEGATE_CONFIG`, `./.claude/donegate.json`, 
 - It looks at the whole transcript for the last edit, not only the current turn, and it counts a matching command whatever it was run against.
 - The `UNVERIFIED:` line is an honor-system exit: the hook checks only that the line has a subject and a reason.
 - Failing open is deliberate, so a hook bug never wedges a session, but it means a broken setup looks the same as a passing one. The quick-start commands above are the way to check yours.
-- Tested here against the transcript format in `tests/fixtures`; the field names above are what the code reads. It has not been run inside a live Claude Code session.
+- Tested here against the transcript format in `tests/fixtures`; the field names above are what the code reads. It has not been run inside a live Claude Code session. `tests/live.py OUTDIR` runs three scripted sessions against a logged-in `claude` CLI and saves every real Stop payload; until its results are committed as fixtures, the live behaviour stays UNVERIFIED.
 
 ## License
 
