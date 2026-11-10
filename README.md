@@ -4,6 +4,16 @@
 
 donegate is a Claude Code Stop hook that stops the agent from saying "done" after editing files unless it ran a test or check afterwards and read the output.
 
+## Try it
+
+```console
+$ git clone https://github.com/decentralizeallengineering/donegate && cd donegate
+$ echo '{"transcript_path":"tests/fixtures/no_test.jsonl","last_assistant_message":"Fixed. The bug is done."}' | python3 donegate.py
+{"decision": "block", "reason": "Completion claimed but files were edited but no test or check command ran after the last edit. Run the test or check and read its output, or add a line 'UNVERIFIED: <what> <why>'."}
+$ echo '{"transcript_path":"tests/fixtures/tested.jsonl","last_assistant_message":"Fixed, all 3 tests pass."}' | python3 donegate.py
+$                      # no output: a test ran after the last edit, so the stop is allowed
+```
+
 ## Why
 
 - An agent can edit a file, never run anything, and still end its turn with "Fixed, all tests pass."
